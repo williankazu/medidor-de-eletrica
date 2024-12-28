@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Elétrica</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="calculator-card">
+            <header class="card-header">
+                <h1>
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                    </svg>
+                    Dimensionamento Elétrico
+                </h1>
+            </header>
+
+            <div class="calculator-content">
+                <!-- Modo de Cálculo -->
+                <div class="calculation-mode">
+                    <h3>Modo de Cálculo</h3>
+                    <div class="mode-buttons">
+                        <button id="voltageCurrentMode" class="mode-button active">Tensão e Corrente</button>
+                        <button id="powerMode" class="mode-button">Potência</button>
+                    </div>
+                </div>
+
+                <!-- Controles Principais -->
+                <div class="main-controls">
+                    <!-- Tensão -->
+                    <div class="control-group">
+                        <h3>Tensão</h3>
+                        <div class="value-display">
+                            <span id="voltageValue" class="main-value">220</span>
+                            <span class="unit">Volts</span>
+                        </div>
+                        <input type="range" id="voltageSlider" min="110" max="380" value="220" class="slider">
+                        <input type="number" id="voltageInput" value="220" class="number-input">
+                    </div>
+
+                    <!-- Corrente -->
+                    <div class="control-group" id="currentControl">
+                        <h3>Corrente</h3>
+                        <div class="value-display">
+                            <span id="currentValue" class="main-value">10.0</span>
+                            <span class="unit">Amperes</span>
+                        </div>
+                        <input type="range" id="currentSlider" min="0" max="80" step="0.1" value="10" class="slider">
+                        <input type="number" id="currentInput" value="10" step="0.1" class="number-input">
+                    </div>
+
+                    <!-- Potência -->
+                    <div class="control-group">
+                        <h3>Potência</h3>
+                        <div class="value-display">
+                            <span id="powerValue" class="main-value">2200</span>
+                            <span class="unit">Watts</span>
+                        </div>
+                        <div id="powerControls" style="display: none;">
+                            <input type="range" id="powerSlider" min="100" max="30000" value="2200" class="slider">
+                            <input type="number" id="powerInput" value="2200" class="number-input">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recomendações -->
+                <div class="recommendations">
+                    <!-- Disjuntor -->
+                    <div class="recommendation-card">
+                        <div class="recommendation-header">
+                            <svg class="icon" viewBox="0 0 24 24">
+                                <path d="M18 3v4m0 14v-4M6 3v4m0 14v-4M3 7h18M3 17h18"/>
+                            </svg>
+                            <h3>Disjuntor Recomendado</h3>
+                        </div>
+                        <div class="recommendation-content">
+                            <p id="breakerValue" class="recommendation-value">16A</p>
+                            <div class="recommendation-details">
+                                <p>Corrente nominal: <span id="nominalCurrent">10.0A</span></p>
+                                <p>Fator de segurança: 25%</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Fio -->
+                    <div class="recommendation-card">
+                        <div class="recommendation-header">
+                            <svg class="icon" viewBox="0 0 24 24">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            </svg>
+                            <h3>Bitola do Fio Recomendada</h3>
+                        </div>
+                        <div class="recommendation-content">
+                            <p id="wireValue" class="recommendation-value">2.5mm²</p>
+                            <div class="recommendation-details">
+                                <p>Capacidade máxima: <span id="wireCapacity">25A</span></p>
+                                <p>Método de instalação: B1</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Alertas -->
+                <div id="alertsContainer" class="alerts"></div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
